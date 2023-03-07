@@ -19,6 +19,7 @@ function Pokelist(props) {
 
     useEffect(() => {
         axios.get(BASE_URL + "?limit=20").then((response) => {
+            //console.log(response)
             setPokemonList(response.data.results);
         });
     }, []);
