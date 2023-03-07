@@ -59,6 +59,20 @@ describe("PokeCard.js", ()=>{
         })
 
         // screen.logTestingPlaygroundURL()
+    })
 
+    test("testar abertura do modal", async () => {
+        //axios.get.mockResolvedValueOnce(axiosResponseMock)
+        axios.get.mockResolvedValueOnce({
+            data: pokeCardMock
+        })
+
+        const user = userEvent.setup()
+        render(<Pokecard url={urlMock} openModal={openModalMock}/>)
+
+        await waitFor(() => {})
+        await user.click(screen.getByRole('article'))
+
+        expect(openModalMock).toBeCalledTimes(1)
     })
 })
