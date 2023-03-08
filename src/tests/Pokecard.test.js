@@ -67,12 +67,14 @@ describe("PokeCard.js", ()=>{
             data: pokeCardMock
         })
 
-        const user = userEvent.setup()
         render(<Pokecard url={urlMock} openModal={openModalMock}/>)
 
+        const user = userEvent.setup()
+        
         await waitFor(() => {})
         await user.click(screen.getByRole('article'))
 
         expect(openModalMock).toBeCalledTimes(1)
+        expect(openModalMock).toReturn()
     })
 })
